@@ -1,0 +1,192 @@
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop
+$ git init Proyecto-Kevin
+Initialized empty Git repository in C:/Users/Mr Perfect/Desktop/Proyecto-Kevin/.git/
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop
+$ git config --global user. name "Kevin Ramirez Tabares"
+error: key does not contain variable name: user.
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop
+$ git config --global user.name "Kevin"
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop
+$ git config --global user.email "kevin.tabares@correounivalle.edu.co"
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop
+$ git checkout -b feature
+fatal: not a git repository (or any of the parent directories): .git
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop
+$ cd Proyecto-Kevin/
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master)
+$ git checkout -b feature
+Switched to a new branch 'feature'
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (feature)
+$ echo "Texto inicial"> archivo.txt
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (feature)
+$ git add archivo.txt
+warning: in the working copy of 'archivo.txt', LF will be replaced by CRLF the next time Git touches it
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (feature)
+$ git commit -m "Commit inicial"
+[feature (root-commit) 5e199f7] Commit inicial
+ 1 file changed, 1 insertion(+)
+ create mode 100644 archivo.txt
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (feature)
+$ echo "Texto agregado en feature" >> archivo.txt
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (feature)
+$ git commit -am "Segundo commit en feature"
+warning: in the working copy of 'archivo.txt', LF will be replaced by CRLF the next time Git touches it
+[feature 7a87190] Segundo commit en feature
+ 1 file changed, 1 insertion(+)
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (feature)
+$ echo "Nuevo texto agregado" >> archivo.txt
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (feature)
+$ git commit -am "Tercer commit en feature"
+warning: in the working copy of 'archivo.txt', LF will be replaced by CRLF the next time Git touches it
+[feature 6380b3a] Tercer commit en feature
+ 1 file changed, 1 insertion(+)
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (feature)
+$ git checkout master
+error: pathspec 'master' did not match any file(s) known to git
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (feature)
+$ git checkout -b master
+Switched to a new branch 'master'
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master)
+$ git merge feature
+Already up to date.
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master)
+$ git reset --hard HEAD~1
+HEAD is now at 7a87190 Segundo commit en feature
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master)
+$ git rebase feature
+Successfully rebased and updated refs/heads/master.
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master)
+$ git checkout -b hotfix
+Switched to a new branch 'hotfix'
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (hotfix)
+$ echo "Corrección urgente" >> archivo.txt
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (hotfix)
+$ git commit -am "Hotfix"
+warning: in the working copy of 'archivo.txt', LF will be replaced by CRLF the next time Git touches it
+[hotfix f014463] Hotfix
+ 1 file changed, 1 insertion(+)
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (hotfix)
+$ git checkout master
+Switched to branch 'master'
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master)
+$ git cherry-pick hotfix
+[master 905c615] Hotfix
+ Date: Fri Oct 4 14:49:20 2024 -0500
+ 1 file changed, 1 insertion(+)
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master)
+$ git checkout feature
+Switched to branch 'feature'
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (feature)
+$ echo "Cambio en feature" > conflicto.txt
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (feature)
+$ git add conflicto.txt
+warning: in the working copy of 'conflicto.txt', LF will be replaced by CRLF the next time Git touches it
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (feature)
+$ git commit -am "Cambio en feature"
+[feature 2a1836a] Cambio en feature
+ 1 file changed, 1 insertion(+)
+ create mode 100644 conflicto.txt
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (feature)
+$ git checkout master
+Switched to branch 'master'
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master)
+$ echo "Cambio en master" > conflicto.txt
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master)
+$ git add conflicto.txt
+warning: in the working copy of 'conflicto.txt', LF will be replaced by CRLF the next time Git touches it
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master)
+$ git commit -am "Cambio en master"
+[master fea17ce] Cambio en master
+ 1 file changed, 1 insertion(+)
+ create mode 100644 conflicto.txt
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master)
+$ git merge feature
+Auto-merging conflicto.txt
+CONFLICT (add/add): Merge conflict in conflicto.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master|MERGING)
+$ git status
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both added:      conflicto.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master|MERGING)
+$ code conflicto.txt
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master|MERGING)
+$ git add conflicto.txt
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master|MERGING)
+$ git commit -m "Correccion conflicto en conflicto.txt"
+[master 4748dde] Correccion conflicto en conflicto.txt
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master)
+$ touch README.md
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master)
+$ code README.md
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master)
+$ git add README.md
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master)
+$ git commit -m "Pasos del taller"
+[master 76de8e8] Pasos del taller
+ 1 file changed, 130 insertions(+)
+ create mode 100644 README.md
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master)
+$ touch log.txt
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master)
+$ code log.txt
+
+Mr Perfect@LAPTOP-8SIHSLEB MINGW64 ~/Desktop/Proyecto-Kevin (master)
+$
