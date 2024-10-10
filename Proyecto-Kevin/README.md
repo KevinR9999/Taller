@@ -128,3 +128,5 @@
    Se creó un archivo `README.md` vacío y se abrió para edición.
 
 Al final del proceso, el repositorio tiene varias ramas (`feature`, `hotfix`, `master`) y se resolvieron conflictos durante la fusión.
+
+Profe ya realice el push
